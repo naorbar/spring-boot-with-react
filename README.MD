@@ -42,7 +42,7 @@ public class HrController {
 }
 ```
 ```
-public interface UserRepository extends CrudRepository<User, String>{
+public interface UserRepository extends CrudRepository<User, String> {
 
 }
 ```
@@ -80,6 +80,7 @@ Note: on production it won't happen since I use the same server (spring-boot's t
 Launch the browser with `--disable-web-security` flag
 E.g. `chrome.exe --disable-web-security`
 or add this extension (the easiest solution):
+
 https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi/related?hl=en-US
 
 #### Setting the proxy for development purposes:
@@ -171,6 +172,6 @@ Since spring-boot application serves static content if you put it into the class
     </executions>
 </plugin>
 ```
-- Generate the artifact using Run > Maven Build (package) > the artifact will be located in the target folder 
-- Run `java -jar <spring_boot_jar>` to start the server, e.g. java -jar spring-boot-with-react-0.0.1-SNAPSHOT.jar
+- Generate the artifact using Run > Maven Build (package) >>> the artifact will be located in the target folder 
+- Run `java -jar <spring_boot_jar>` to start the server, e.g. `java -jar spring-boot-with-react-0.0.1-SNAPSHOT.jar`
 - Browse to localhost:8080 and verify the frontend is loaded as expected
