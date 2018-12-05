@@ -10,7 +10,7 @@ It uses:
 
 - Use spring initializer to create a spring-boot application with JPA, H2, WEB and DEVTOOLS
 - Import the spring-boot application to the IDE as an existing Maven project
-- Create a simple controller and a manager with CRUD Repository
+- Create a simple controller and a manager with a CRUD Repository
 
 e.g.
 ```
@@ -41,8 +41,16 @@ public class HrController {
 	}
 }
 ```
+```
+public interface UserRepository extends CrudRepository<User, String>{
 
-- Start the server and verify that the controller responds at http://localhot:8080/test, http://localhot:8080/users and http://localhot:8080/users/{id} 
+}
+```
+
+- Start the server and verify that the controller responds at:
+	- http://localhot:8080/test
+	- http://localhot:8080/users
+	- http://localhot:8080/users/{id} 
 - Check that the H2 console is available at http://localhost:8080/h2-console
 
 Additional Settings in application.properties:
@@ -64,14 +72,14 @@ Now we have both server running at http://localhost:8080 and client running at h
 ```
 Access to fetch at 'http://localhost:8080/test' from origin 'http://localhost:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource...
 ```
-Note: on production it won't happen since I use the same server (spring-boot's tomcat) to server both UI and Server. 
+Note: on production it won't happen since I use the same server (spring-boot's tomcat) to serve both UI and Server. 
 
-### To avoid this on development you can enable CORS on the browser or the server or or set up a proxy in the client
+### To avoid this on development you can enable CORS on the browser or the server, or set up a proxy in the client
 
 #### Setting the browser for development purposes:
 Launch the browser with `--disable-web-security` flag
 E.g. `chrome.exe --disable-web-security`
-or add this extension:
+or add this extension (the easiest solution):
 https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi/related?hl=en-US
 
 #### Setting the proxy for development purposes:
@@ -163,5 +171,6 @@ Since spring-boot application serves static content if you put it into the class
     </executions>
 </plugin>
 ```
+- Generate the artifact using Run > Maven Build (package) > the artifact will be located in the target folder 
 - Run `java -jar <spring_boot_jar>` to start the server, e.g. java -jar spring-boot-with-react-0.0.1-SNAPSHOT.jar
 - Browse to localhost:8080 and verify the frontend is loaded as expected
